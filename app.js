@@ -1,4 +1,4 @@
-// 🔥 Configuración de Firebase (copiada desde tu consola)
+// Configuración de Firebase (copiada desde tu consola)
 const firebaseConfig = {
   apiKey: "AIzaSyCEqtQ-gd0KjSqrT6IAofqoB4aYX_yTUp4",
   authDomain: "apuestapartido-5e41a.firebaseapp.com",
@@ -44,7 +44,7 @@ if (!userName) {
 const prediction = {
   tol,
   jun,
-  name: userName, // 👈 Guardamos el nombre
+  name: userName, // Guardamos el nombre
   timestamp: firebase.database.ServerValue.TIMESTAMP
 };
   try {
@@ -64,7 +64,7 @@ predictionsRef.on('value', (snapshot) => {
   container.innerHTML = '';
 
   if (!data) {
-    container.innerHTML = '<p class="loading">Aún no hay predicciones 🤔</p>';
+    container.innerHTML = '<p class="loading">Aún no hay predicciones </p>';
     return;
   }
 
