@@ -1,0 +1,415 @@
+/* ———————————————————————————————— */
+/* 🏟️ ESTILO FUTBOLERO — Tolima vs Junior */
+/* ———————————————————————————————— */
+
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Oswald:wght@500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Oswald', sans-serif;
+  background: 
+    /* Césped sutil */
+    linear-gradient(rgba(20, 80, 20, 0.05), rgba(20, 80, 20, 0.05)),
+    /* Fondo oscuro tipo noche de estadio */
+    radial-gradient(circle at 30% 30%, #1a1a2e 0%, #0f0f1a 100%);
+  color: white;
+  min-height: 100vh;
+  padding: 16px;
+  overflow-x: hidden;
+}
+
+/* ———————————————————————————————— */
+/* 🎯 HEADER — Iluminación tipo reflectores */
+/* ———————————————————————————————— */
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative;
+  padding: 20px 0;
+}
+
+/* Efecto de "luces de estadio" */
+header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 6px;
+  background: linear-gradient(90deg, 
+    transparent, #e53935, #ffd700, #e63946, #ffd700, #e53935, transparent);
+  animation: sweep 3s infinite;
+}
+
+@keyframes sweep {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+header h1 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(2.5rem, 8vw, 4rem);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: #ffd700;
+  text-shadow: 
+    0 0 10px rgba(255, 215, 0, 0.7),
+    0 0 20px rgba(229, 57, 53, 0.5);
+  margin-bottom: 0.3rem;
+}
+
+header p {
+  font-size: clamp(1rem, 4vw, 1.4rem);
+  font-weight: 500;
+  opacity: 0.9;
+  background: linear-gradient(to right, #e53935, #e63946);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
+/* ———————————————————————————————— */
+/* 🧱 SECCIONES — Estilo de banca de estadio */
+/* ———————————————————————————————— */
+
+main {
+  max-width: 850px;
+  margin: 0 auto;
+}
+
+.prediction-form,
+.predictions-list {
+  background: rgba(15, 15, 30, 0.75);
+  border-radius: 20px;
+  padding: 28px;
+  margin-bottom: 2rem;
+  backdrop-filter: blur(12px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 
+    0 8px 20px rgba(0, 0, 0, 0.5),
+    inset 0 0 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Líneas tipo banca de estadio */
+.prediction-form::before,
+.predictions-list::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 8px;
+  background: repeating-linear-gradient(
+    90deg,
+    #e53935 0px,
+    #e53935 20px,
+    #ffffff 20px,
+    #ffffff 40px,
+    #000000 40px,
+    #000000 60px
+  );
+}
+
+/* ———————————————————————————————— */
+/* 🏆 FORMULARIO — Estilo de marcador central */
+/* ———————————————————————————————— */
+
+.prediction-form h2,
+.predictions-list h2 {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(1.6rem, 6vw, 2.2rem);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: #ffd700;
+  text-align: center;
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.prediction-form h2::after {
+  content: '';
+  display: block;
+  width: 80px;
+  height: 3px;
+  background: linear-gradient(to right, #e53935, #ffd700, #e63946);
+  margin: 8px auto;
+  border-radius: 2px;
+}
+
+.score-input {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.team img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  filter: drop-shadow(0 4px 8px rgba(0,0,0,0.6));
+  transition: transform 0.3s, filter 0.3s;
+  border-radius: 50%;
+  background: white;
+  padding: 4px;
+  border: 2px solid #ffd700;
+}
+
+.team:nth-child(1) img { border-color: #e53935; }
+.team:nth-child(3) img { border-color: #e63946; }
+
+.team img:hover {
+  transform: scale(1.08) rotate(2deg);
+  filter: drop-shadow(0 6px 12px rgba(229, 57, 53, 0.8));
+}
+
+.vs {
+  font-family: 'Bebas Neue', cursive;
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 0 0 12px rgba(255, 215, 0, 0.8);
+  position: relative;
+}
+
+.vs::before,
+.vs::after {
+  content: '⚽';
+  position: absolute;
+  font-size: 0.7em;
+  top: -10px;
+}
+
+.vs::before { left: -25px; animation: bounce 1.5s infinite; }
+.vs::after { right: -25px; animation: bounce 1.5s 0.3s infinite; }
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.name-input {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.name-input label {
+  display: block;
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+  color: #ffd700;
+}
+
+.name-input input {
+  width: 80%;
+  max-width: 300px;
+  padding: 12px;
+  font-size: 1rem;
+  border-radius: 8px;
+  border: 2px solid #e53935;
+  background: rgba(0, 0, 0, 0.2);
+  color: white;
+  text-align: center;
+}
+
+.name-input input:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 0 4px rgba(255, 215, 0, 0.2);
+}
+#tolima-score,
+#junior-score {
+  width: 80px;
+  height: 80px;
+  font-size: 2.4rem;
+  font-family: 'Bebas Neue', cursive;
+  text-align: center;
+  border-radius: 50%;
+  background: #0d0d1a;
+  color: white;
+  border: 4px solid;
+  outline: none;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+}
+
+#tolima-score {
+  border-color: #e53935;
+}
+#junior-score {
+  border-color: #e63946;
+}
+
+#tolima-score:focus,
+#junior-score:focus {
+  transform: scale(1.05);
+  box-shadow: 0 0 0 4px rgba(229, 57, 53, 0.4), 0 6px 15px rgba(0,0,0,0.5);
+}
+
+
+
+/* ———————————————————————————————— */
+/* 🎯 BOTÓN — Estilo de silbato de inicio (CORREGIDO) */
+/* ———————————————————————————————— */
+
+button {
+  display: block;
+  margin: 0 auto;
+  padding: 16px 48px;
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #e53935, #c62828);
+  color: white;
+  border: none;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 
+    0 6px 0 #9e1f1f,
+    0 10px 20px rgba(0, 0, 0, 0.4);
+  position: relative;
+  overflow: hidden;
+  min-width: 200px; /* ← Asegura espacio suficiente */
+  text-align: center; /* ← Centra el texto */
+}
+
+/* Eliminamos el ::after "whistle" porque causa colisión */
+/* button::after {
+  content: ' whistle';
+  position: absolute;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  font-family: Arial, sans-serif;
+  font-size: 1.2rem;
+} */
+
+button:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 8px 0 #9e1f1f,
+    0 12px 25px rgba(0, 0, 0, 0.5);
+  background: linear-gradient(135deg, #ff5252, #e53935);
+}
+
+button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0 #9e1f1f, 0 4px 10px rgba(0,0,0,0.3);
+}
+
+/* ———————————————————————————————— */
+/* 📋 LISTA DE PREDICCIONES — Tablero de marcador */
+/* ———————————————————————————————— */
+
+.prediction-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  background: rgba(30, 30, 50, 0.6);
+  border-radius: 16px;
+  margin-bottom: 16px;
+  font-size: 1.2rem;
+  border-left: 4px solid #ffd700;
+  transition: background 0.3s;
+}
+
+.prediction-item:hover {
+  background: rgba(40, 40, 70, 0.8);
+  transform: translateX(5px);
+}
+
+.prediction-item .score {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 1.8rem;
+  font-weight: bold;
+}
+
+.prediction-item .score span:first-child {
+  color: #e53935;
+}
+.prediction-item .score span:last-child {
+  color: #e63946;
+}
+
+.prediction-item small {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+}
+
+.loading {
+  text-align: center;
+  padding: 30px;
+  font-style: italic;
+  color: #aaa;
+}
+
+/* ———————————————————————————————— */
+/* 📱 RESPONSIVE */
+/* ———————————————————————————————— */
+
+@media (max-width: 600px) {
+  .score-input {
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .vs {
+    font-size: 2.5rem;
+  }
+
+  .team img {
+    width: 70px;
+    height: 70px;
+  }
+
+  #tolima-score,
+  #junior-score {
+    width: 70px;
+    height: 70px;
+    font-size: 2rem;
+  }
+
+  button {
+    padding: 14px 32px;
+    font-size: 1.2rem;
+  }
+}
+
+/* ———————————————————————————————— */
+/* 🏁 FOOTER */
+/* ———————————————————————————————— */
+
+footer {
+  text-align: center;
+  margin-top: 2rem;
+  padding: 20px;
+  font-size: 0.95rem;
+  color: #aaa;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+footer p::before {
+  content: '⚽ ';
+}

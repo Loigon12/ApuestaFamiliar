@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Polla Tolima vs Junior</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+  </head>
+  <body>
+    <header>
+      <h1>Predice el marcador</h1>
+      <p>Tolima vs Junior — Partido de ida</p>
+    </header>
+
+    <main>
+      <section class="prediction-form">
+        <h2>Tu predicción</h2>
+        <form id="predictionForm">
+          <div class="score-input">
+            <div class="team">
+              <img src="images/Escudo_Tolima.png" alt="Tolima" />
+              <input
+                type="number"
+                id="tolima-score"
+                min="0"
+                max="9"
+                placeholder="0"
+                required
+              />
+            </div>
+            <span class="vs">–</span>
+            <div class="team">
+              <input
+                type="number"
+                id="junior-score"
+                min="0"
+                max="9"
+                placeholder="0"
+                required
+              />
+              <img
+                src="images/Escudo_de_Atlético_Junior.svg.png"
+                alt="Junior"
+              />
+            </div>
+          </div>
+
+          <!-- Dentro del formulario, después de los inputs de marcador -->
+          <div class="name-input">
+            <label for="user-name">Tu nombre:</label>
+            <input
+              type="text"
+              id="user-name"
+              placeholder="Ej: Sebastián"
+              maxlength="20"
+              required
+            />
+          </div>
+
+          <button type="submit">Enviar predicción</button>
+        </form>
+      </section>
+
+      <section class="predictions-list">
+        <h2>Predicciones de todos</h2>
+        <div id="predictions-container">
+          <p class="loading">Cargando predicciones...</p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Hecho para la familia y compartir en unión</p>
+    </footer>
+
+    <script src="app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-database-compat.js"></script>
+  </body>
+</html>
